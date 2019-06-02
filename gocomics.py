@@ -12,7 +12,7 @@ import sys
 import logging
 import datetime
 import functools
-
+import time
 import gevent
 import gevent.pool
 import grequests
@@ -41,6 +41,7 @@ def get_pool(pool=None, size=5):
     return gevent.pool.Pool(size=size) if pool is None else pool
 
 def get_url(url, retries=5):
+    time.sleep(5)
     logging.info("Asking for %s...", url)
     req = None
     while retries:
